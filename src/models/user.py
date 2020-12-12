@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from app import db
-from src.models.checkin import CheckIn
 
 @dataclass
 class User(db.Model):

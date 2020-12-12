@@ -1,7 +1,9 @@
 import os
-from flask import Flask
+from functools import wraps
+from flask import Flask, request
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
+import json
 
 
 # Load env
@@ -19,6 +21,29 @@ db = SQLAlchemy(app)
 
 if __name__ == '__main__':
     app.run(debug=bool(int(os.getenv('FLASK_DEBUG', 0))))
+
+
+# APIs
+def route_api():
+    def _route_api(f):
+        @wraps(f)
+        def __route_api(*args, **kwargs):
+            try:
+                return f(*args, **kwargs)
+            except Exception as e:
+                if bool(int(os.getenv('FLASK_DEBUG', 0))):
+                    if  'raw' in request.form or 'raw' in request.args:
+                        raise e
+
+                return {
+                    'status': 'error',
+                    'message': str(e)
+                }, e.code if hasattr(e, 'code') else 500
+        
+        return __route_api
+
+    return _route_api
+
 
 
 # Routes

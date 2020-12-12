@@ -2,9 +2,6 @@ from functools import wraps
 from flask import render_template, session,jsonify, redirect, url_for
 from app import app
 
-# API - User
-import src.api.user
-
 
 def login_redirect():
     def _login_redirect(f):
@@ -20,6 +17,13 @@ def login_redirect():
 
 
 
+
+# API - User
+import src.api.user
+# API - Checkin
+import src.api.checkin
+# API - Tags
+import src.api.tags
 
 
 # Views
