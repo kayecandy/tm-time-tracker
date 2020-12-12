@@ -13,7 +13,7 @@ load_dotenv(override=True)
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI', '')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.cmonfig['SECRET_KEY'] = os.getenv('SESSION_SECRET_KEY', 'tm-time-tracker')
+app.config['SECRET_KEY'] = os.getenv('SESSION_SECRET_KEY', 'tm-time-tracker')
 db = SQLAlchemy(app)
 
 
