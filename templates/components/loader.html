@@ -1,0 +1,113 @@
+<!-- These are inline/in-html to remove loading time overhead -->
+<style>
+    .cndce-loader{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* font-family: monospace; */
+        font-size: 5rem;
+        white-space: nowrap;
+
+        z-index: 10000;
+    }
+
+    .cndce-loader__underscore{
+        animation: blink-caret 0.5s step-end infinite;
+        color: orange;
+        vertical-align: middle;
+    }
+
+    .cndce-typewriter {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em;
+        vertical-align: middle;
+        animation: 
+            typing 5s linear infinite;
+        animation-delay: 2s;
+        width: 0;
+    }
+
+    /* The typing effect */
+    @keyframes typing {
+        0% {
+            width: 0;
+        }
+        12%{
+            width: 0;
+        }
+        12.1%{
+            width: 3rem;
+        }
+        24%{
+            width: 3rem;
+        }
+        24.1%{
+            width: 7rem;
+        }
+        36%{
+            width: 7rem;
+        }
+        36.1%{
+            width: 11rem;
+        }
+        48%{
+            width: 11rem;
+        }
+        48.1%{
+            width: 15rem;
+        }
+        60%{
+            width: 15rem;
+        }
+        60.1%{
+            width: 18rem;
+        }
+        72%{
+            width: 18rem;
+        }
+        72.1%{
+            width: 21rem;
+        }
+
+        85%{
+            width: 21rem;
+        }
+        85.1% { width: auto }
+        100%{
+            width: auto;
+        }
+    }
+
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+        from, to { color: transparent }
+        50% { color: orange; }
+    }
+</style>
+
+<div class="cndce-loader">
+    <!-- <i class="fas fa-terminal"></i> -->
+
+
+    
+
+    <div class="mb-5">
+
+
+        <span style="vertical-align: middle;">></span>
+        <span class="cndce-typewriter">LOADING</span>
+
+        <span class="cndce-loader__underscore">_</span>
+    </div>
+</div>

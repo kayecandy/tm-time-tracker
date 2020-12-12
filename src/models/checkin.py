@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from datetime import datetime
 from app import db
 from flask import session
@@ -88,6 +88,12 @@ class CheckIn(db.Model):
         db.session.commit()
 
 
+
+    @staticmethod
+    def get_all_by_user(user_id):
+        s = CheckIn.query.filter_by(user_id = user_id, status=CheckInStatus.active).all()
+
+        return [asdict(checkin) for  checkin in s]
 
     @staticmethod
     def verify_user_id(checkin_id):

@@ -1,0 +1,46 @@
+{% from "/components/input.html" import input with context %}
+
+<div id="cndce-checkin-add-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+	
+		<div class="modal-content">
+			<form method="POST" action="api/checkin/add">
+				<!-- Header -->
+				<div class="modal-header">
+					<h5 class="modal-title">Add Check-In Entry</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<!-- Body -->
+				<div class="modal-body px-4 pt-4 pb-5">
+					<div class="row align-items-center">
+						
+						<div class="col">
+							{{input("Time", "hours", type="number", required=True)}}
+						</div>
+	
+						<div class="col-auto mt-4 pl-0" style="font-size: 1.2rem;">hrs</div>
+	
+					</div>
+					<div class="row align-items-center">
+						<div class="col-auto mt-4 pr-0" style="font-size: 1.2rem;">#</div>
+						<div class="col">
+							{{input("Tag", "tag_name", required=True)}}
+						</div>
+					</div>
+	
+					{{input("Activity", "activity", required=True)}}
+	
+				</div>
+
+				<!-- Footer -->
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Add Check-In</button>
+				</div>
+			</form>
+			
+		</div>
+    </div>
+  </div>

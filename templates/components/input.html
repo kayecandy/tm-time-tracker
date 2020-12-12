@@ -1,0 +1,10 @@
+{% macro input(label, name, type="text", required=False) %}
+    <div class="form__group field">
+        <input type="{{type}}" class="form__field" placeholder="{{name}}" id="input-{{name}}"
+        name="{{name}}" 
+        {%- if required -%} required {% endif %}/>
+        <label for="input-{{name}}" class="form__label">{{label}}</label>
+    </div>
+{% endmacro %}
+
+

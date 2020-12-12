@@ -1,8 +1,16 @@
-from flask import request
+from flask import request, session
 from app import route_api, app
 from src.api.user import current_user_only, loggedin_only
 from src.models.checkin import CheckIn
 
+
+@app.route('/api/checkin/table', methods=['POST', 'GET'])
+@route_api()
+@loggedin_only()
+def api_checkin_table():
+    return {
+        'checkins': CheckIn.get_all_by_user(session.get('user')['id'])
+    }
 
 @app.route('/api/checkin/add', methods=['POST'])
 @route_api()

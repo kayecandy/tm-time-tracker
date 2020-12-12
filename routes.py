@@ -29,11 +29,15 @@ import src.api.tags
 # Views
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('pages/login.html')
 
+
+@app.route('/helloworld')
+def helloworld():
+    return render_template('pages/helloworld.html');
 
 @app.route('/')
 @login_redirect()
 def index():
-    return render_template('index.html')
+    return render_template('pages/index.html')
 
