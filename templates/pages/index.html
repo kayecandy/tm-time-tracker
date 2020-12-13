@@ -117,6 +117,10 @@
 
         <div class="container mt-3">
 
+            <div class="cndce-filter-container p-3 my-4">
+                Filters:
+            </div>
+
             <div class="tab-content">
                 <div 
                     id="table"
@@ -144,7 +148,7 @@
                     role="tabpanel"
                     aria-labelledby="pills-pie-tab">
 
-                    pie
+                    {% include 'components/checkin-pie.html' %}
 
                 </div>
 
@@ -194,6 +198,11 @@
 
         <!-- Self - Checkin Table -->
         <script src="{{url_for('static', filename='js/checkin-table.js')}}"></script>
+
+        <!-- Self - Checkin Pie -->
+        <script src="{{url_for
+            ('static', filename='js/checkin-pie.js')}}"></script>
+
 
 
     </body>

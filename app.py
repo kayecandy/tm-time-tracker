@@ -35,10 +35,13 @@ def route_api():
                     if  'raw' in request.form or 'raw' in request.args:
                         raise e
 
+                code = e.code if hasattr(e, 'code') and e.code.isdigit() else 500
+
                 return {
                     'status': 'error',
+                    'status_code': code,
                     'message': str(e)
-                }, e.code if hasattr(e, 'code') else 500
+                }, code
         
         return __route_api
 

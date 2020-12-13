@@ -1,3 +1,44 @@
 .cndce-view-nav .nav-link .fa{
     font-size: 2rem;
 }
+
+
+.cndce-filter-container{
+    background: #e6e6e6;
+    border-radius: 1rem;
+}
+
+
+.cndce-checkin-pie{
+    text-align: center;
+}
+.cndce-checkin-pie svg{
+    width: 500px;
+}
+
+
+.cndce-pie-arcs{
+    cursor: pointer;
+    transform-box: fill-box;
+    transform-origin: center;
+    text-anchor: middle;
+    transition: all 0.3s cubic-bezier(0.42, 0, 0.1, 1.4)
+}
+
+.cndce-pie-arcs:hover{
+    transform: scale(1.1)
+}
+
+
+.cndce-pie-label tspan{
+    fill: white;
+    transition: all 0.3s ease-in-out;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.cndce-pie-arcs:hover .cndce-pie-label tspan{
+    fill: black;
+    stroke: black;
+    transform: scale(1.1)
+}
