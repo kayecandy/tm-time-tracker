@@ -10,6 +10,11 @@ body{
     background: #f9f9f9;
 }
 
+.disabled{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 
 /* Input Field */
 /* Input Field */

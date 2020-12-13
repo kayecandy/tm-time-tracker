@@ -34,8 +34,11 @@ def route_api():
                 if bool(int(os.getenv('FLASK_DEBUG', 0))):
                     if  'raw' in request.form or 'raw' in request.args:
                         raise e
-
-                code = e.code if hasattr(e, 'code') and e.code.isdigit() else 500
+                
+                try:
+                    code = e.code if hasattr(e, 'code') and int(e.code) else 500
+                except:
+                    code = 500
 
                 return {
                     'status': 'error',
