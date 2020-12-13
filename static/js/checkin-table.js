@@ -20,7 +20,13 @@ CNDCE.loadCheckins = new Promise((resolve)=>{
                 CNDCE.checkinDataVisible = json.checkins;
     
                 $checkinTable.bootstrapTable({
-                    data: json.checkins
+                    data: json.checkins,
+                    rowAttributes: (row) => {
+                        return {
+                            'data-id': row.id,
+                            'class': 'cndce-checkin-row'
+                        }
+                    }
                 });
 
                 CNDCE.__initGroupedByPresets();
@@ -53,12 +59,48 @@ CNDCE.loadCheckins = new Promise((resolve)=>{
         $('#cndce-reset-button').click(function(){
             CNDCE.updateCheckinData(CNDCE.checkinData.checkins)
         })
+
+        $('#cndce-delete-button').click(function(){
+
+            $checkinTable.bootstrapTable('getSelections').forEach((toDelete) => {
+
+                $toDelete = $(`.cndce-checkin-row[data-id=${toDelete.id}]`);
+                $toDelete.addClass('disabled');
+                $toDelete.removeClass('selected')
+                $toDelete.css({
+                    opacity: 0.5
+                })
+
+                $.ajax({
+                    url: '/api/checkin/delete',
+                    method: 'POST',
+                    data: {
+                        checkin_id: toDelete.id
+                    },
+                    success: function(){
+
+                        CNDCE.checkinData.checkins = CNDCE.checkinData.checkins.filter((d)=>d.id != toDelete.id)
+
+                        CNDCE.checkinDataVisible = CNDCE.checkinDataVisible.filter((d)=>d.id != toDelete.id)
+
+
+
+                        CNDCE.updateCheckinData()
+
+                        $checkinTable.bootstrapTable('remove', {
+                            field: 'id',
+                            values: [toDelete.id]
+                        })
+                    }
+                })
+            })
+        })
     
     })
 });
 
 
-CNDCE.updateCheckinData = (newData) => {
+CNDCE.updateCheckinData = (newData = CNDCE.checkinDataVisible) => {
     const $checkinTable = $('.cndce-checkin-table');
 
     CNDCE.checkinDataVisible = newData;
