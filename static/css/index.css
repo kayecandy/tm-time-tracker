@@ -8,6 +8,21 @@
     border-radius: 1rem;
 }
 
+.filter-date-range{
+    cursor: pointer;
+    background: orange;
+    border-radius: 0.5rem;
+    color: white;
+    align-self: stretch;
+}
+
+.filter-date-range input{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}
+
 
 .cndce-checkin-pie{
     text-align: center;
@@ -26,7 +41,7 @@
 }
 
 .cndce-pie-arcs:hover{
-    transform: scale(1.1)
+    transform: scale(1.1);
 }
 
 

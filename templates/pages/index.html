@@ -22,6 +22,9 @@
         <!-- Bootstrap Table -->
         <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css">
 
+        <!-- DateRange Picker -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 
         <!-- Style -->
         <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
@@ -118,7 +121,24 @@
         <div class="container mt-3">
 
             <div class="cndce-filter-container p-3 my-4">
-                Filters:
+                <div class="row align-items-center">
+                    <div class="col-auto" style="font-weight: bold; color: #b9b9b9;">
+                        Filters: 
+                    </div>
+
+                    <div class="filter-date-range px-3 py-1 col-auto">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="text" name="daterange" class="filter-date-range"
+                        value=""
+                        >
+
+                    </div>
+
+                    <div class="col-auto px-2">
+                        <button id="cndce-reset-button" class="btn btn-secondary">Reset Filters</button>
+                    </div>
+                </div>
+
             </div>
 
             <div class="tab-content">
@@ -190,6 +210,10 @@
 
         <!-- D3 -->
         <script src="https://d3js.org/d3.v6.min.js"></script>
+
+        <!-- DateRange Picker -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
 

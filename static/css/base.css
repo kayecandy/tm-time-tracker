@@ -86,3 +86,8 @@ select:not(.placeholder-shown) ~ .form__label {
 .btn{
     width: 100%;
 }
+
+
+.daterangepicker .btn{
+    width: auto;
+}
