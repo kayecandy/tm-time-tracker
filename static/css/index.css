@@ -23,6 +23,10 @@
     color: white;
 }
 
+.cndce-checkin-table td:nth-child(6){
+    min-width: 10rem;
+}
+
 
 .cndce-checkin-pie{
     text-align: center;
