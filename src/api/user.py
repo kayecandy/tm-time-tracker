@@ -58,3 +58,18 @@ def api_login():
 def api_logout():
     session.clear()
     return {'message': 'Logout success!'}, 200
+
+
+@app.route('/api/user/add', methods=['POST'])
+@route_api()
+def api_user_add():
+    newUser = User(
+        username = request.form['username'],
+        password = request.form['password']
+    )
+    newUser.add()
+
+    return {
+        'message': 'Successfully added user!',
+        'user': newUser
+    }

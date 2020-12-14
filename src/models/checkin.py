@@ -5,7 +5,7 @@ from flask import session
 import enum
 
 from src.models.tag import Tag
-from src.models.user import User
+# from src.models.user import User
 
 
 class CheckInStatus(str, enum.Enum):

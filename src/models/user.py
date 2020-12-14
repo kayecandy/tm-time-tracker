@@ -16,11 +16,21 @@ class User(db.Model):
     checkins = db.relationship("CheckIn", back_populates="user", lazy=True)
 
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, 
+        username = None,
+        password = None,
+        *args, **kwargs
+    ):
         super().__init__(*args, **kwargs)
+
+        self.username = username
+        self.password = password
 
 
     @staticmethod
     def login(username, password):
         return User.query.filter_by(username=username, password=password).first()
         
+    def add(self):
+        db.session.add(self)
+        db.session.commit()
