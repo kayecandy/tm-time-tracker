@@ -108,11 +108,13 @@ These are available in `\templates`. Everything else is pretty straightforward
 
 *Features:*
 1. Login/Logout
+
     Uses [Flask Session](https://flask-session.readthedocs.io/en/latest/) to store logged in user data
 
     > **Implementation Note:** I'm known to always go the extra step but for this module, I'm so sorry to say that passwords aren't encrypted. I WAS going to add this later on, but given that I'm already late in submitting this, I no longer had enough time. If I **were** to add password encryption, I'd just use a basic one way encryption algorithm such as MD5 or SHA in the python code before processing to database.
     
 2. Filter by Date Range
+
     This is my solution to this requirement:
     > 2\. Show all check ins, grouped by day
 
@@ -122,7 +124,10 @@ These are available in `\templates`. Everything else is pretty straightforward
     
 3. Add/Delete Checkin
 
+    Each checkin has a `status` attribute with values `active` or `deleted`. The `Delete` operation does not actually delete the data, but marks it as `deleted`
+
 4. Pie Chart
+
     This is a [D3 Pie chart](https://observablehq.com/@d3/pie-chart). The data available (filtered/unfiltered) is grouped by tags. It's interactable (SVG) and has some basic transitions when filtering the data.
     
     > **Implementation Note:** There's a bug in the transition when only one tag remains. This is fixable but I didn't have enough time
@@ -130,7 +135,8 @@ These are available in `\templates`. Everything else is pretty straightforward
     > **Implementation Note:** `SVG` is easiest to implement when it comes to interactable charts but when dealing with bigger datasets, a `canvas` implementation would be better suited.
     
     
-#### General Implementation Notes
+
+### General Implementation Notes
 1. For the front-end, I didn't spend too much time on error and asynchronous handling, but at the bare minimum, they do exist for both add/delete operations
 
 
