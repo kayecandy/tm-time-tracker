@@ -151,13 +151,13 @@ These are available in `\templates`. Everything else is pretty straightforward
 ├── src
 |   ├── api
 |   |    ├── checkin.py # Contains available /api/checkin routes
-|   |    ├── user.py # Contains available /api/checkin routes
-|   |    └── checkin.py # Contains available /api/checkin routes
+|   |    ├── tags.py # Contains available /api/tags routes
+|   |    └── user.py # Contains available /api/user routes
 |   |
 |   └── models # ORM files (flask-sqlalchemy)
 |        ├── checkin.py
-|        ├── user.py
-|        └── checkin.py
+|        ├── tag.py
+|        └── user.py
 |   
 | 
 ├── static # Directory for assets such as scripts and images
@@ -174,6 +174,7 @@ These are available in `\templates`. Everything else is pretty straightforward
 ├── app.py # Main/start python code
 ├── routes.py # Contains available browser routes.
 |
+├── README.pdf
 └── README.md                
 
 ```
