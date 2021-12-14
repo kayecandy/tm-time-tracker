@@ -39,3 +39,18 @@ def api_checkin_delete(checkin:CheckIn):
         'message': 'Checkin successfully deleted',
         'checkin': checkin
     }
+
+@app.route('/api/checkin/edit', methods=['POST'])
+@route_api()
+@current_user_only(lambda req: CheckIn.verify_user_id(req.form['checkin_id']))
+def api_checkin_edit(checkin:CheckIn):
+
+    checkin.update(
+        tag_name = request.form['tag_name'],
+        activity = request.form['activity']
+    )
+
+    return{
+        'message': 'Checkin successfully updated',
+        'checkin': checkin
+    }

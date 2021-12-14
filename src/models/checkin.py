@@ -67,9 +67,9 @@ class CheckIn(db.Model):
         self.status = status
         self.__tmp_tag_name = tag_name
 
-
-    def add(self):
-         # Create new tag entry if tag_name exists
+    
+    def update_tag(self):
+        # Create new tag entry if tag_name exists
         if self.__tmp_tag_name is not None:
             t = Tag.get_by_name(self.__tmp_tag_name)
 
@@ -83,6 +83,10 @@ class CheckIn(db.Model):
 
             del self.__tmp_tag_name
 
+
+    def add(self):
+        
+        self.update_tag()
 
         db.session.add(self)
         db.session.commit()
@@ -107,5 +111,14 @@ class CheckIn(db.Model):
 
     def delete(self):
         self.status = CheckInStatus.deleted
+        db.session.commit()
+
+    def update(self, tag_name, activity):
+
+        self.activity = activity
+        self.__tmp_tag_name = tag_name
+
+        self.update_tag()
+
         db.session.commit()
 
